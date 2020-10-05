@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import raytracing.util.Logger;
 import raytracing.util.Matrix;
 
-class MatricTest {
+class MatrixTest {
 
 	@Test
 	void testMatrixSummation() {
@@ -59,13 +59,9 @@ class MatricTest {
 		a.printMatrix();
 		System.out.println("B");
 		b.printMatrix();
-		if(compareMatrices(result, new Matrix(expectedResult)))
-			assertEquals(1, 1);
-		else {
+		assertEquals(true, compareMatrices(result, new Matrix(expectedResult)));
+		if(!compareMatrices(result, new Matrix(expectedResult)))
 			new Logger(this.getClass().getName(), "testMatrixSubstraction", "Matrices do not match");
-			result.printMatrix();
-			assertEquals(1, 0);
-		}
 	}
 	
 	
