@@ -8,3 +8,10 @@ I have made some util classes that will be used in the rest of the code. Here is
 | -------|-------------------------------------------------------------------------------------------------|
 | Matrix | This class contains basic matrix operations such as multiplication, substration, summation, ... |
 | Vector | This class will be the representation of a vector  |
+
+### Testing
+For testing the application we will use Junit testing. different testing units will be created to test the code properly. here is a summary of the different test classes.
+
+| Class  | To test ...                                                                          |
+| -------|-------------------------------------------------------------------------------------------------|
+| MatrixTest | Test the basic functionalities of the matrix class |
