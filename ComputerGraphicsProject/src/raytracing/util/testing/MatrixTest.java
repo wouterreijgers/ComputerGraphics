@@ -40,8 +40,20 @@ class MatrixTest {
 		double[][] dMatrix = {
 				{0, 1, 2, 3},
 				{4, 5, 6, 7},
-				{0, 3, 1, 0},
-				{0, 2, 0, 1}};
+				{8, 9, 10, 11},
+				{12, 13, 14, 15}};
+		double[][] expectedResult2 = {
+				{15, 15, 15, 15},
+				{15, 15, 15, 15},
+				{15, 15, 15, 15},
+				{15, 15, 15, 15}};
+		Matrix c = new Matrix(cMatrix);
+		Matrix d = new Matrix(dMatrix);
+		Matrix result2 = c.addition(d);
+		if(compareMatrices(result2, new Matrix(expectedResult2)))
+			assertEquals(1, 1);
+		else
+			assertEquals(1, 0);
 	}
 	
 	@Test
