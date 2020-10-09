@@ -21,6 +21,7 @@ class FactoryTest {
         assertEquals(true, compareMatrices(translation, new Matrix(expected)));
     }
 
+    @Test
     void testScaling() {
         double[][] expected = {
                 {3, 0, 0, 0},
@@ -30,6 +31,12 @@ class FactoryTest {
         Matrix translation = new MatrixFactory().scalingMatrix(3, 4, 2);
         assertEquals(true, compareMatrices(translation, new Matrix(expected)));
     }
+
+    @Test
+    void testRotation() {
+        // TODO: test the rotation matrix
+    }
+
 
 
     public Boolean compareMatrices(Matrix a, Matrix b) {

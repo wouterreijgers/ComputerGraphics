@@ -19,29 +19,34 @@ public class MatrixFactory {
     public Matrix rotationMatrix(String axis, double angle){
         double cos = Math.cos(angle);
         double sin = Math.sin(angle);
+        Matrix matrix;
         switch (axis)
         {
             case "X":
-                return new Matrix()
+                matrix = new Matrix()
                         .change(1, 1, cos)
                         .change(2, 1, -sin)
                         .change(2, 2, cos)
                         .change(2, 1, cos);
                 break;
             case "Y":
-                return new Matrix();
+                matrix = new Matrix()
+                        .change(0, 0, cos)
+                        .change(2, 0, -sin)
+                        .change(2, 2, cos)
+                        .change(0, 2, sin);
                 break;
             case "Z":
-                return new Matrix();
+                matrix = new Matrix()
+                        .change(0, 0, cos)
+                        .change(0, 1, -sin)
+                        .change(1, 1, cos)
+                        .change(0, 2, sin);
                 break;
             default:
-                return new Matrix();
+                matrix = new Matrix();
         }
-
-        return new Matrix()
-                .change(0, 0, x)
-                .change(1, 1, y)
-                .change(2, 2, z);
+        return matrix;
 
     }
 

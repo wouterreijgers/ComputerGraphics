@@ -114,6 +114,12 @@ public class Matrix {
 		return new Matrix(result);
 	}
 
+	public Matrix getInverse(){
+
+
+		return new Matrix();
+	}
+
 	
 
 	
