@@ -126,7 +126,23 @@ class MatrixTest {
 		if(!compareMatrices(result, new Matrix(expectedResult)))
 			new Logger(this.getClass().getName(), "testMatrixSubstraction", "Matrices do not match");
 	}
-	
+
+	@Test
+	void testInverseMatric() {
+		// Initialize two matrices to add
+		double[][] aMatrix = {
+				{1, 1, 1, -1},
+				{1, 1, -1, 1},
+				{1, -1, 1, 1},
+				{-1, 1, 1, 1}};
+
+
+		Matrix a = new Matrix(aMatrix);
+		Matrix inverse = a.getInverse();
+		Matrix result = a.multiplication(inverse);
+		result.printMatrix();
+
+	}
 	
 	
 	public Boolean compareMatrices(Matrix a, Matrix b) {

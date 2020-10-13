@@ -20,6 +20,6 @@ public class Vector {
 	}
 
 	public double dotproduct(Point p) {
-		return x*p.x +y*p.y + z*p.z;
+		return x*p.x +y*p.y + z*p.z + a*p.a;
 	}
 }

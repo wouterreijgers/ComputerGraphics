@@ -2,6 +2,7 @@ package raytracing.util;
 
 public class Point {
     double x, y, z;
+    double a = 0;
 
     public Point(double x, double y, double z){
         this.x = x;

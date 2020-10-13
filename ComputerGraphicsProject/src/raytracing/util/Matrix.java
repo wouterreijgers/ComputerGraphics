@@ -115,13 +115,318 @@ public class Matrix {
 	}
 
 	public Matrix getInverse(){
+		double determinant=0;
+		double A2[][] = {
+				{0, 0, 0, 0},
+				{0, 0, 0, 0},
+				{0, 0, 0, 0},
+				{0, 0, 0, 0}};
+		double [][] temp;
 
+		//Determinant and first column of Ã
+		for(int i=0;i<4;i++){
+			for(int j=0;j<4;j++){
+				switch (i) {
+					case 0:
+						switch (j){
+							case 0:
+								temp = new double[][]{
+										{matrix[1][1], matrix[1][2], matrix[1][3]},
+										{matrix[2][1], matrix[2][2], matrix[2][3]},
+										{matrix[3][1], matrix[3][2], matrix[3][3]}};
 
-		return new Matrix();
+								A2[i][j] =  (temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 1:
+
+								temp = new double[][]{
+										{matrix[1][0], matrix[1][2], matrix[1][3]},
+										{matrix[2][0], matrix[2][2], matrix[2][3]},
+										{matrix[3][0], matrix[3][2], matrix[3][3]}};
+								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(A2[i][j]);
+
+								break;
+							case 2:
+								temp = new double[][]{
+										{matrix[1][0], matrix[1][1], matrix[1][3]},
+										{matrix[2][0], matrix[2][1], matrix[2][3]},
+										{matrix[3][0], matrix[3][1], matrix[3][3]}};
+								A2[i][j] =(temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 3:
+								temp = new double[][]{
+										{matrix[1][0], matrix[1][1], matrix[1][2]},
+										{matrix[2][0], matrix[2][1], matrix[2][2]},
+										{matrix[3][0], matrix[3][1], matrix[3][2]}};
+								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							default:
+								new Logger("", "invert", "out of range");
+								break;
+						}
+
+					case 1:
+						switch (j){
+							case 0:
+								temp = new double[][]{
+										{matrix[0][1], matrix[0][2], matrix[0][3]},
+										{matrix[2][1], matrix[2][2], matrix[2][3]},
+										{matrix[3][1], matrix[3][2], matrix[3][3]}};
+								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 1:
+								temp = new double[][]{
+										{matrix[0][0], matrix[0][2], matrix[0][3]},
+										{matrix[2][0], matrix[2][2], matrix[2][3]},
+										{matrix[3][0], matrix[3][2], matrix[3][3]}};
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 2:
+								temp = new double[][]{
+										{matrix[0][0], matrix[0][1], matrix[0][3]},
+										{matrix[2][0], matrix[2][1], matrix[2][3]},
+										{matrix[3][0], matrix[3][1], matrix[3][3]}};
+								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 3:
+								temp = new double[][]{
+										{matrix[0][0], matrix[0][1], matrix[0][2]},
+										{matrix[2][0], matrix[2][1], matrix[2][2]},
+										{matrix[3][0], matrix[3][1], matrix[3][2]}};
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							default:
+								new Logger("", "invert", "out of range");
+								break;
+						}
+					case 2:
+						switch (j){
+							case 0:
+								temp = new double[][]{
+										{matrix[0][1], matrix[0][2], matrix[0][3]},
+										{matrix[1][1], matrix[1][2], matrix[1][3]},
+										{matrix[3][1], matrix[3][2], matrix[3][3]}};
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 1:
+								temp = new double[][]{
+										{matrix[0][0], matrix[0][2], matrix[0][3]},
+										{matrix[1][0], matrix[1][2], matrix[1][3]},
+										{matrix[3][0], matrix[3][2], matrix[3][3]}};
+								A2[i][j] = - (temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 2:
+								temp = new double[][]{
+										{matrix[0][0], matrix[0][1], matrix[0][3]},
+										{matrix[1][0], matrix[1][1], matrix[1][3]},
+										{matrix[3][0], matrix[3][1], matrix[3][3]}};
+								A2[i][j] =  (temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 3:
+								temp = new double[][]{
+										{matrix[0][0], matrix[0][1], matrix[0][2]},
+										{matrix[1][0], matrix[1][1], matrix[1][2]},
+										{matrix[3][0], matrix[3][1], matrix[3][2]}};
+								A2[i][j] = - (temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							default:
+								new Logger("", "invert", "out of range");
+								break;
+						}
+					case 3:
+						switch (j){
+							case 0:
+								temp = new double[][]{
+										{matrix[0][1], matrix[0][2], matrix[0][3]},
+										{matrix[1][1], matrix[1][2], matrix[1][3]},
+										{matrix[2][1], matrix[2][2], matrix[2][3]}};
+								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 1:
+								temp = new double[][]{
+										{matrix[0][0], matrix[0][2], matrix[0][3]},
+										{matrix[1][0], matrix[1][2], matrix[1][3]},
+										{matrix[2][0], matrix[2][2], matrix[2][3]}};
+								A2[i][j] =  (temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 2:
+								temp = new double[][]{
+										{matrix[0][0], matrix[0][1], matrix[0][3]},
+										{matrix[1][0], matrix[1][1], matrix[1][3]},
+										{matrix[2][0], matrix[2][1], matrix[2][3]}};
+								A2[i][j] =  -(temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							case 3:
+								temp = new double[][]{
+										{matrix[0][0], matrix[0][1], matrix[0][2]},
+										{matrix[1][0], matrix[1][1], matrix[1][2]},
+										{matrix[2][0], matrix[2][1], matrix[2][2]}};
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
+										+ temp[0][1] * temp[1][2] * temp[2][0]
+										+ temp[0][2] * temp[1][0] * temp[2][1]
+										- temp[0][2] * temp[1][1] * temp[2][0]
+										- temp[0][1] * temp[1][0] * temp[2][2]
+										- temp[0][0] * temp[1][2] * temp[2][1]);
+								break;
+							default:
+								new Logger("", "invert", "out of range");
+								break;
+						}
+				}
+			}
+		}
+		double[] A3={0,0,0,0};
+		for(int i=0;i<4;i++){
+			switch (i){
+				case 0:
+					temp = new double[][]{
+							{matrix[1][1], matrix[1][2], matrix[1][3]},
+							{matrix[2][1], matrix[2][2], matrix[2][3]},
+							{matrix[3][1], matrix[3][2], matrix[3][3]}};
+					A3[i] = matrix[i][0]
+							* (temp[0][0] * temp[1][1] * temp[2][2]
+							+ temp[0][1] * temp[1][2] * temp[2][0]
+							+ temp[0][2] * temp[1][0] * temp[2][1]
+							- temp[0][2] * temp[1][1] * temp[2][0]
+							- temp[0][1] * temp[1][0] * temp[2][2]
+							- temp[0][0] * temp[1][2] * temp[2][1]);
+					break;
+				case 1:
+					temp = new double[][]{
+							{matrix[1][0], matrix[1][2], matrix[1][3]},
+							{matrix[2][0], matrix[2][2], matrix[2][3]},
+							{matrix[3][0], matrix[3][2], matrix[3][3]}};
+					A3[i] = matrix[i][0]
+							* (temp[0][0] * temp[1][1] * temp[2][2]
+							+ temp[0][1] * temp[1][2] * temp[2][0]
+							+ temp[0][2] * temp[1][0] * temp[2][1]
+							- temp[0][2] * temp[1][1] * temp[2][0]
+							- temp[0][1] * temp[1][0] * temp[2][2]
+							- temp[0][0] * temp[1][2] * temp[2][1]);
+					break;
+				case 2:
+					temp = new double[][]{
+							{matrix[1][0], matrix[1][1], matrix[1][3]},
+							{matrix[2][0], matrix[2][1], matrix[2][3]},
+							{matrix[3][0], matrix[3][1], matrix[3][3]}};
+					A3[i] = matrix[i][0]
+							* (temp[0][0] * temp[1][1] * temp[2][2]
+							+ temp[0][1] * temp[1][2] * temp[2][0]
+							+ temp[0][2] * temp[1][0] * temp[2][1]
+							- temp[0][2] * temp[1][1] * temp[2][0]
+							- temp[0][1] * temp[1][0] * temp[2][2]
+							- temp[0][0] * temp[1][2] * temp[2][1]);
+					break;
+				case 3:
+					temp = new double[][]{
+							{matrix[1][0], matrix[1][1], matrix[1][2]},
+							{matrix[2][0], matrix[2][1], matrix[2][2]},
+							{matrix[3][0], matrix[3][1], matrix[3][2]}};
+					A3[i] = matrix[i][0]
+							* (temp[0][0] * temp[1][1] * temp[2][2]
+							+ temp[0][1] * temp[1][2] * temp[2][0]
+							+ temp[0][2] * temp[1][0] * temp[2][1]
+							- temp[0][2] * temp[1][1] * temp[2][0]
+							- temp[0][1] * temp[1][0] * temp[2][2]
+							- temp[0][0] * temp[1][2] * temp[2][1]);
+					break;
+				default:
+					new Logger("", "invert", "out of range");
+					break;
+			}
+		}
+
+		determinant = A3[0]-A3[1]+A3[2]-A3[3];
+		System.out.println(determinant);
+		new Matrix(A2).printMatrix();
+		Matrix inverse = new Matrix(A2).divide(determinant);
+		return inverse;
 	}
 
-	
+	private Matrix divide(double determinant) {
+		for(int i=0;i<4;i++){
+			for(int j=0;j<4;j++){
+				matrix[i][j] = matrix[i][j]/determinant;
+			}
+		}
+		return this;
+	}
 
-	
 
 }
