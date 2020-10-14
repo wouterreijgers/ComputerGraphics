@@ -124,23 +124,23 @@ public class Matrix {
 		double [][] temp;
 
 		//Determinant and first column of Ã
-		for(int i=0;i<4;i++){
-			for(int j=0;j<4;j++){
-				switch (i) {
-					case 0:
-						switch (j){
+		for(int i=0;i<4;i++) {
+			switch (i) {
+				case 0:
+					for (int j = 0; j < 4; j++) {
+						switch (j) {
 							case 0:
 								temp = new double[][]{
 										{matrix[1][1], matrix[1][2], matrix[1][3]},
 										{matrix[2][1], matrix[2][2], matrix[2][3]},
 										{matrix[3][1], matrix[3][2], matrix[3][3]}};
-
-								A2[i][j] =  (temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
 								break;
 							case 1:
 
@@ -148,13 +148,13 @@ public class Matrix {
 										{matrix[1][0], matrix[1][2], matrix[1][3]},
 										{matrix[2][0], matrix[2][2], matrix[2][3]},
 										{matrix[3][0], matrix[3][2], matrix[3][3]}};
-								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
-								System.out.println(A2[i][j]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
 
 								break;
 							case 2:
@@ -162,43 +162,51 @@ public class Matrix {
 										{matrix[1][0], matrix[1][1], matrix[1][3]},
 										{matrix[2][0], matrix[2][1], matrix[2][3]},
 										{matrix[3][0], matrix[3][1], matrix[3][3]}};
-								A2[i][j] =(temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 3:
 								temp = new double[][]{
 										{matrix[1][0], matrix[1][1], matrix[1][2]},
 										{matrix[2][0], matrix[2][1], matrix[2][2]},
 										{matrix[3][0], matrix[3][1], matrix[3][2]}};
-								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							default:
 								new Logger("", "invert", "out of range");
 								break;
 						}
-
-					case 1:
-						switch (j){
+					}
+					break;
+				case 1:
+					for (int j = 0; j < 4; j++) {
+						switch (j) {
 							case 0:
 								temp = new double[][]{
 										{matrix[0][1], matrix[0][2], matrix[0][3]},
 										{matrix[2][1], matrix[2][2], matrix[2][3]},
 										{matrix[3][1], matrix[3][2], matrix[3][3]}};
-								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 1:
 								temp = new double[][]{
@@ -211,18 +219,22 @@ public class Matrix {
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 2:
 								temp = new double[][]{
 										{matrix[0][0], matrix[0][1], matrix[0][3]},
 										{matrix[2][0], matrix[2][1], matrix[2][3]},
 										{matrix[3][0], matrix[3][1], matrix[3][3]}};
-								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 3:
 								temp = new double[][]{
@@ -235,13 +247,17 @@ public class Matrix {
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
 								break;
 							default:
 								new Logger("", "invert", "out of range");
 								break;
 						}
-					case 2:
-						switch (j){
+					}
+					break;
+				case 2:
+					for (int j = 0; j < 4; j++) {
+						switch (j) {
 							case 0:
 								temp = new double[][]{
 										{matrix[0][1], matrix[0][2], matrix[0][3]},
@@ -253,84 +269,102 @@ public class Matrix {
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 1:
 								temp = new double[][]{
 										{matrix[0][0], matrix[0][2], matrix[0][3]},
 										{matrix[1][0], matrix[1][2], matrix[1][3]},
 										{matrix[3][0], matrix[3][2], matrix[3][3]}};
-								A2[i][j] = - (temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 2:
 								temp = new double[][]{
 										{matrix[0][0], matrix[0][1], matrix[0][3]},
 										{matrix[1][0], matrix[1][1], matrix[1][3]},
 										{matrix[3][0], matrix[3][1], matrix[3][3]}};
-								A2[i][j] =  (temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 3:
 								temp = new double[][]{
 										{matrix[0][0], matrix[0][1], matrix[0][2]},
 										{matrix[1][0], matrix[1][1], matrix[1][2]},
 										{matrix[3][0], matrix[3][1], matrix[3][2]}};
-								A2[i][j] = - (temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							default:
 								new Logger("", "invert", "out of range");
 								break;
 						}
-					case 3:
-						switch (j){
+					}
+					break;
+				case 3:
+					for (int j = 0; j < 4; j++) {
+						switch (j) {
 							case 0:
 								temp = new double[][]{
 										{matrix[0][1], matrix[0][2], matrix[0][3]},
 										{matrix[1][1], matrix[1][2], matrix[1][3]},
 										{matrix[2][1], matrix[2][2], matrix[2][3]}};
-								A2[i][j] = -(temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 1:
 								temp = new double[][]{
 										{matrix[0][0], matrix[0][2], matrix[0][3]},
 										{matrix[1][0], matrix[1][2], matrix[1][3]},
 										{matrix[2][0], matrix[2][2], matrix[2][3]}};
-								A2[i][j] =  (temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 2:
 								temp = new double[][]{
 										{matrix[0][0], matrix[0][1], matrix[0][3]},
 										{matrix[1][0], matrix[1][1], matrix[1][3]},
 										{matrix[2][0], matrix[2][1], matrix[2][3]}};
-								A2[i][j] =  -(temp[0][0] * temp[1][1] * temp[2][2]
+								A2[i][j] = (temp[0][0] * temp[1][1] * temp[2][2]
 										+ temp[0][1] * temp[1][2] * temp[2][0]
 										+ temp[0][2] * temp[1][0] * temp[2][1]
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(
+										i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							case 3:
 								temp = new double[][]{
@@ -343,12 +377,15 @@ public class Matrix {
 										- temp[0][2] * temp[1][1] * temp[2][0]
 										- temp[0][1] * temp[1][0] * temp[2][2]
 										- temp[0][0] * temp[1][2] * temp[2][1]);
+								System.out.println(i + ", " + j + " -> " + A2[i][j]);
+
 								break;
 							default:
 								new Logger("", "invert", "out of range");
 								break;
 						}
-				}
+					}
+					break;
 			}
 		}
 		double[] A3={0,0,0,0};
@@ -414,8 +451,20 @@ public class Matrix {
 
 		determinant = A3[0]-A3[1]+A3[2]-A3[3];
 		System.out.println(determinant);
-		new Matrix(A2).printMatrix();
-		Matrix inverse = new Matrix(A2).divide(determinant);
+		double tempVal = 0;
+		double A4[][] = {
+				{0, 0, 0, 0},
+				{0, 0, 0, 0},
+				{0, 0, 0, 0},
+				{0, 0, 0, 0}};
+		for(int i=0;i<4;i++) {
+			for (int j = 0; j < 4; j++) {
+				A4[i][j]=Math.pow((-1), i+j)*A2[j][i];
+			}
+		}
+		//new Matrix(A2).printMatrix();
+		Matrix inverse = new Matrix(A4).divide(determinant);
+		inverse.printMatrix();
 		return inverse;
 	}
 
