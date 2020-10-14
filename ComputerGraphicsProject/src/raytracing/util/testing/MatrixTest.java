@@ -131,15 +131,10 @@ class MatrixTest {
 	void testInverseMatric() {
 		// Initialize two matrices to add
 		double[][] aMatrix = {
-				{1, 7, 1, -1},
-				{1, 1, 1, 1},
-				{1, 2, 1, 1},
-				{-1, 1, 1, 1}};
-		double[][] bMatrix = {
-				{0, 0.5, 0, -0.5},
-				{0, -1, 1, 0},
-				{0.5, 1, -1, 0.5},
-				{-0.5, 0.5, 0, 0}};
+				{12, 4, 26, 5},
+				{7, 3, 5, 4},
+				{3, 4, 45, 5},
+				{7, 5, 3, 3}};
 
 
 		Matrix a = new Matrix(aMatrix);

@@ -123,7 +123,6 @@ public class Matrix {
 				{0, 0, 0, 0}};
 		double [][] temp;
 
-		//Determinant and first column of Ã
 		for(int i=0;i<4;i++) {
 			switch (i) {
 				case 0:
@@ -406,9 +405,9 @@ public class Matrix {
 					break;
 				case 1:
 					temp = new double[][]{
-							{matrix[1][0], matrix[1][2], matrix[1][3]},
-							{matrix[2][0], matrix[2][2], matrix[2][3]},
-							{matrix[3][0], matrix[3][2], matrix[3][3]}};
+							{matrix[0][1], matrix[0][2], matrix[0][3]},
+							{matrix[2][1], matrix[2][2], matrix[2][3]},
+							{matrix[3][1], matrix[3][2], matrix[3][3]}};
 					A3[i] = matrix[i][0]
 							* (temp[0][0] * temp[1][1] * temp[2][2]
 							+ temp[0][1] * temp[1][2] * temp[2][0]
@@ -419,9 +418,9 @@ public class Matrix {
 					break;
 				case 2:
 					temp = new double[][]{
-							{matrix[1][0], matrix[1][1], matrix[1][3]},
-							{matrix[2][0], matrix[2][1], matrix[2][3]},
-							{matrix[3][0], matrix[3][1], matrix[3][3]}};
+							{matrix[0][1], matrix[0][2], matrix[0][3]},
+							{matrix[1][1], matrix[1][2], matrix[1][3]},
+							{matrix[3][1], matrix[3][2], matrix[3][3]}};
 					A3[i] = matrix[i][0]
 							* (temp[0][0] * temp[1][1] * temp[2][2]
 							+ temp[0][1] * temp[1][2] * temp[2][0]
@@ -432,9 +431,9 @@ public class Matrix {
 					break;
 				case 3:
 					temp = new double[][]{
-							{matrix[1][0], matrix[1][1], matrix[1][2]},
-							{matrix[2][0], matrix[2][1], matrix[2][2]},
-							{matrix[3][0], matrix[3][1], matrix[3][2]}};
+							{matrix[0][1], matrix[0][2], matrix[0][3]},
+							{matrix[1][1], matrix[1][2], matrix[1][3]},
+							{matrix[2][1], matrix[2][2], matrix[2][3]}};
 					A3[i] = matrix[i][0]
 							* (temp[0][0] * temp[1][1] * temp[2][2]
 							+ temp[0][1] * temp[1][2] * temp[2][0]
@@ -462,6 +461,12 @@ public class Matrix {
 				A4[i][j]=Math.pow((-1), i+j)*A2[j][i];
 			}
 		}
+		System.out.println("A2");
+		new Matrix(A2).printMatrix();
+		System.out.println("A4");
+		new Matrix(A4).printMatrix();
+		System.out.println("A4");
+
 		//new Matrix(A2).printMatrix();
 		Matrix inverse = new Matrix(A4).divide(determinant);
 		inverse.printMatrix();

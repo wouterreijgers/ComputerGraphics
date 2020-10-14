@@ -39,6 +39,11 @@ public class PointPlotter {
     {
         pointPanel.drawPoint(y, x, r, g, b);
     }
+
+    public void forceUpdate()
+    {
+        pointPanel.repaint();
+    }
 }
 
 
