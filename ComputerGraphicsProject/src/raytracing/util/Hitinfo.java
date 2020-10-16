@@ -4,11 +4,15 @@ public class Hitinfo {
     public int amountOfHits;
     public double t1;
     public double t2;
+    Point p1;
+    Point p2;
 
-    public Hitinfo(int amountOfHits, double t1, double t2){
+    public Hitinfo(int amountOfHits, double t1, double t2, Point p1, Point p2){
         this.amountOfHits = amountOfHits;
         this.t1 = t1;
         this.t2 = t2;
+        this.p1 = p1;
+        this.p2 = p2;
     }
 
     public int getAmountOfHits() {
