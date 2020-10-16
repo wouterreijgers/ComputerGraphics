@@ -1,8 +1,6 @@
 package raytracing.objects;
 
-import raytracing.util.Point;
-import raytracing.util.Ray;
-import raytracing.util.Vector;
+import raytracing.util.*;
 
 public class Sphere {
     Point point;
@@ -13,11 +11,24 @@ public class Sphere {
         this.radius = radius;
     }
 
-    public boolean isHit(Ray ray){
+    public Hitinfo isHit(Ray ray){
         // Calculate a discriminant
-        double A = ray.getDirection().dotproduct(ray.getStart().substract(point));
-        Point B = ray.getStart().substract(point);
+        double A = ray.getDirection().dotproduct(ray.getDirection());
+        double B = ray.getDirection().dotproduct(ray.getStart());
+        double C = Math.pow(ray.getDirection().getnorm(), 2)- Math.pow(radius, 2);
 
-        return true;
+        double discriminant = Math.pow(B, 2)-A*C;
+
+        if (discriminant<0) {
+            new Logger(this.getClass().getName(), "isHit()", "Miss");
+            return new Hitinfo(0, 0, 0);
+        }
+        double t1 = (-B+Math.sqrt(discriminant))/(2*A);
+        double t2 = (-B-Math.sqrt(discriminant))/(2*A);
+        int amountOfHits = 2;
+        if (discriminant==0)
+            amountOfHits = 1;
+
+        return new Hitinfo(amountOfHits, t1, t2);
     }
 }
